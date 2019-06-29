@@ -4,5 +4,15 @@ go:
 - 1.11.x
 - 1.12.x
 
-script:
- - go build ./go/hello-world/.
+jobs:
+  include:
+    - script: echo "Running unit tests (1)"
+    - script:  go build ./go/hello-world/.
+    - stage: GitHub Release
+      script: echo "Deploying to GitHub releases ..."
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        skip_cleanup: true
+        on:
+          tags: true
