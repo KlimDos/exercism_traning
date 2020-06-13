@@ -1,2 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 def hello():
-    f'Hello, World!'
+    return "Hello, World!"
+
+if __name__ == "__main__":
+    hello()
