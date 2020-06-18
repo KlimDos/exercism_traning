@@ -10,27 +10,18 @@ db = {
 }
 
 
-def proteins(strand):
-    return _analyze(_separate(strand))
-
-def _separate(dna: str) -> list:
+def proteins(strand: str, db=db):
     result = []
     codon = ""
-    for letter in dna:
+    for letter in strand:
         codon += letter
         if len(codon) == 3:
-            result.append(codon)
+            for i, v in db.items():
+                for j in v:
+                    if codon == j:
+                        if i == "STOP":
+                            return result
+                        else:
+                            result.append(i)
             codon = ""
-    return result
-
-def _analyze(dna: list, db=db) -> None:
-    result = []
-    for codon in dna:
-        for i, v in db.items():
-            for j in v:
-                if codon == j:
-                    if i == "STOP":
-                        return result
-                    else:
-                        result.append(i)
     return result
