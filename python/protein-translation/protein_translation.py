@@ -1,16 +1,16 @@
 db = {
-"Tryptophan": ["UGG"],
-"Methionine": ["AUG"],
-"Leucine": ["UUA", "UUG"],
-"Tyrosine": ["UAU", "UAC"],
-"Cysteine": ["UGU", "UGC"],
-"STOP": ["UAA", "UAG", "UGA"],
-"Phenylalanine": ["UUU", "UUC"],
-"Serine": ["UCU", "UCC", "UCA", "UCG"]
+    "Tryptophan":       ["UGG"],
+    "Methionine":       ["AUG"],
+    "Leucine":          ["UUA", "UUG"],
+    "Tyrosine":         ["UAU", "UAC"],
+    "Cysteine":         ["UGU", "UGC"],
+    "Phenylalanine":    ["UUU", "UUC"],
+    "STOP":             ["UAA", "UAG", "UGA"],
+    "Serine":           ["UCU", "UCC", "UCA", "UCG"]
 }
 
 
-def proteins(strand: str, db=db):
+def proteins(strand: str, db=db) -> list:
     result = []
     codon = ""
     for letter in strand:
