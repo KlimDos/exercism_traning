@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+  busybox:
+    image: busybox
+    volumes:
+      - type: bind
+        source: /tmp/test_pro.txt
+        target: /opt/config/test_pro.txt
+    command: ['sh', '-c', 'while true; do sleep 3600; done']
+    container_name: busybox
+    deploy:
+      mode: replicated
+      replicas: 3
+      placement:
+        constraints:
+          - "node.role==worker"
